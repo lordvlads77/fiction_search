@@ -104,3 +104,27 @@ final boldItalic20 = TextStyle(
   fontWeight: FontWeight.w700,
   fontSize: 20
 );
+
+final boldItalic30 = TextStyle(
+    color: HexColor("#FFFFFF"),
+    fontFamily: 'Roboto',
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w700,
+    fontSize: 30
+);
+
+final mItalic25 = TextStyle(
+    fontFamily: 'Roboto',
+    color: HexColor("#FFFFFF"),
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w500,
+    fontSize: 25
+);
+
+final light25 = TextStyle(
+  fontFamily: 'Roboto',
+  color: HexColor("#FFFFFF"),
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w300,
+  fontSize: 25
+);
