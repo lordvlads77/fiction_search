@@ -21,3 +21,7 @@ samples, guidance on mobile development, and a full API reference.
 - How to make all the Mediums Italics in initScreen.dart left aligned and the Regular texts center aligned.
 - Ask what is the image between Image.asset and Image(image:)
 - Ask how to move the icons in the bottom so they have more space between them
+- Why the Sign up button it's a little more to the right than the New Around here button?
+
+## TODO's
+- Remove the greytextField in case I dont use it in the future
