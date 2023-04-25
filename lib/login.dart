@@ -30,11 +30,18 @@ class _LoginState extends State<Login> {
 
       save_data(email, password);
 
-      Navigator.of(context).push(MaterialPageRoute(
+      /*Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context){
             return new Bienvenida();
           }
-      ));
+      ));*/
+
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+          builder: (BuildContext context){
+            return Bienvenida();
+          }
+      ),
+              (route) => false);
     }
 
     c_email.text = '';
@@ -73,6 +80,41 @@ class _LoginState extends State<Login> {
           );
         }
     );
+  }
+
+  Future<void> show_data()async {
+
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+
+    email = (await preferences.getString('email'))!;
+    password = (await preferences.getString('password'))!;
+
+    print('Email: '+email);
+    print('Password: '+password);
+
+    if(email != null){
+      if (email != '') {
+        /*Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context){
+              return new Bienvenida();
+            }
+        ));*/
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+            builder: (BuildContext context){
+              return Bienvenida();
+            }
+        ),
+                (route) => false);
+      }
+    }
+
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    show_data();
   }
 
   @override
