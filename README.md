@@ -24,4 +24,4 @@ samples, guidance on mobile development, and a full API reference.
 - Why the Sign up button it's a little more to the right than the New Around here button?
 
 ## TODO's
-- Remove the greytextField in case I dont use it in the future
+- Remove the greytextField in case I dont use it in the future.
