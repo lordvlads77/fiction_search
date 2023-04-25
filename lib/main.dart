@@ -16,7 +16,7 @@ import 'signup.dart';
        title: 'FictionSearch',
        debugShowCheckedModeBanner: false,
        theme: ThemeData(primarySwatch: Colors.grey),
-       home: Login(),
+       home: SignUp(),
      );
    }
  }

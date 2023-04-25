@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'welcome.dart';
+import 'signup.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -14,7 +15,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
-  bool _remember = false;
   var c_email = TextEditingController();
   var c_password = TextEditingController();
 
@@ -61,7 +61,7 @@ class _LoginState extends State<Login> {
         barrierDismissible: false,
         builder: (BuildContext context){
           return AlertDialog(
-           title: Text('REMEMBAS'),
+           title: Text('Attention:'),
            content: SingleChildScrollView(
              child: ListBody(
                children: [
@@ -277,7 +277,14 @@ class _LoginState extends State<Login> {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: MaterialButton(
-                              onPressed: () => print('Pressed Button'),
+                              onPressed: () {
+                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                                    builder: (BuildContext context){
+                                      return SignUp();
+                                    }
+                                ),
+                                        (route) => false);
+                              },
                               padding: EdgeInsets.only(left: 0),
                               child: Text('Sign up!',
                                 style: boldItalic20,
