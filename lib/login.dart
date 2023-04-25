@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'welcome.dart';
 import 'signup.dart';
+import 'passwordrecovery.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -258,7 +259,14 @@ class _LoginState extends State<Login> {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: MaterialButton(
-                                onPressed: () => print('Pressed Button'),
+                                onPressed: () {
+                                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                                      builder: (BuildContext context){
+                                        return PasswordRecovery();
+                                      }
+                                  ),
+                                          (route) => false);
+                                },
                               padding: EdgeInsets.only(left: 0),
                               child: Text('Forgot Password?',
                                 style: sRegularStyle,
