@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'styles.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'styles.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -23,7 +23,7 @@ class _LoginState extends State<Login> {
             height: double.infinity,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: HexColor("#262626")
+                color: HexColor("#262626")
             ),
           ),
           Container(
@@ -61,7 +61,7 @@ class _LoginState extends State<Login> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Login',
+                          Text('Sign Up',
                             style: biggerWLoginStyle,
                           ),
                           SizedBox(
@@ -70,7 +70,7 @@ class _LoginState extends State<Login> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Username:',
+                              Text('Email:',
                                 style: whiteusernameStyle,
                               ),
                               SizedBox(
@@ -83,9 +83,50 @@ class _LoginState extends State<Login> {
                                   borderRadius: BorderRadius.vertical(),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: HexColor("#FFFFFF"),
-                                      blurRadius: 6,
-                                      offset: Offset(0, 3)
+                                        color: HexColor("#FFFFFF"),
+                                        blurRadius: 6,
+                                        offset: Offset(0, 3)
+                                    ),
+                                  ],
+                                ),
+                                height: 40,
+                                child: TextField(
+                                  keyboardType: TextInputType.emailAddress,
+                                  style: sRegularStyle,
+                                  decoration: InputDecoration(
+                                      prefixIcon: Icon(
+                                        Icons.email_outlined,
+                                        color: HexColor("#FFFFFF"),
+                                      ),
+                                      hintText: 'Write your Email',
+                                      hintStyle: lightHintTxtF
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 18,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Username:',
+                                style: whiteusernameStyle,
+                              ),
+                              SizedBox(
+                                height: 3,
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                decoration: BoxDecoration(
+                                  color: HexColor("#888888"),
+                                  borderRadius: BorderRadius.vertical(),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: HexColor("#FFFFFF"),
+                                        blurRadius: 6,
+                                        offset: Offset(0, 3)
                                     ),
                                   ],
                                 ),
@@ -99,14 +140,14 @@ class _LoginState extends State<Login> {
                                       color: HexColor("#FFFFFF"),
                                     ),
                                     hintText: 'Write your username',
-                                    hintStyle: lightHintTxtF
+                                    hintStyle: lightHintTxtF,
                                   ),
                                 ),
                               ),
                             ],
                           ),
                           SizedBox(
-                            height: 50,
+                            height: 18,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,48 +177,19 @@ class _LoginState extends State<Login> {
                                   keyboardType: TextInputType.text,
                                   style: sRegularStyle,
                                   decoration: InputDecoration(
-                                      prefixIcon: Icon(
-                                        Icons.lock_outline,
-                                        color: HexColor("#FFFFFF"),
-                                      ),
-                                      hintText: 'Write your password',
-                                      hintStyle: lightHintTxtF,
+                                    prefixIcon: Icon(
+                                      Icons.lock_outline,
+                                      color: HexColor("#FFFFFF"),
+                                    ),
+                                    hintText: 'Write your password',
+                                    hintStyle: lightHintTxtF,
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: MaterialButton(
-                                onPressed: () => print('Pressed Button'),
-                              padding: EdgeInsets.only(left: 0),
-                              child: Text('Forgot Password?',
-                                style: sRegularStyle,
-                              ),
-                            ),
-                          ),
                           SizedBox(
-                            height: 5,
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text('New around here?',
-                              style: medium23RStyle,
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: MaterialButton(
-                              onPressed: () => print('Pressed Button'),
-                              padding: EdgeInsets.only(left: 0),
-                              child: Text('Sign up!',
-                                style: boldItalic20,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
+                            height: 60,
                           ),
                           Container(
                             alignment: Alignment.bottomRight,
@@ -196,6 +208,3 @@ class _LoginState extends State<Login> {
     );
   }
 }
-
-
-
