@@ -9,11 +9,30 @@ final masterStyle = TextStyle(
   fontWeight: FontWeight.w400
 );
 
+
+/*Text Field Styles */
 final txtSearchField = TextStyle(
   fontFamily: 'Roboto',
   fontStyle: FontStyle.normal,
   fontSize: 20,
 );
+
+final sRegularStyle = TextStyle(
+  color: HexColor("#FFFFFF"),
+  fontFamily: 'Roboto',
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w400
+);
+
+final lightHintTxtF = TextStyle(
+  color: HexColor("#FFFFFF"),
+  fontFamily: 'Roboto',
+  fontStyle: FontStyle.italic,
+  fontWeight: FontWeight.w300,
+  fontSize: 20
+);
+
+/*General Letter Styles*/
 
 final mItalic = TextStyle(
   fontFamily: 'Roboto',
@@ -37,4 +56,51 @@ final boldStyle = TextStyle(
   fontFamily: 'Roboto',
   fontWeight: FontWeight.w700,
   fontSize: 26
+);
+
+final greyloginStyle = TextStyle(
+  color: HexColor("#888888"),
+  fontFamily: 'Roboto',
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w400,
+  fontSize: 30,
+);
+
+final whiteloginStyle = TextStyle(
+  color: HexColor("#FFFFFF"),
+  fontFamily: 'Roboto',
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w400,
+  fontSize: 30,
+);
+
+final biggerWLoginStyle = TextStyle(
+    color: HexColor("#FFFFFF"),
+    fontFamily: 'Roboto',
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w400,
+    fontSize: 35
+);
+
+final whiteusernameStyle = TextStyle(
+  color: HexColor("#FFFFFF"),
+  fontFamily: 'Roboto',
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w400,
+  fontSize: 20
+);
+
+final medium23RStyle = TextStyle(
+  color: HexColor("#FFFFFF"),
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w500,
+  fontSize: 23
+);
+
+final boldItalic20 = TextStyle(
+  color: HexColor("#FFFFFF"),
+  fontFamily: 'Roboto',
+  fontStyle: FontStyle.italic,
+  fontWeight: FontWeight.w700,
+  fontSize: 20
 );
