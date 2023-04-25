@@ -3,6 +3,7 @@ import 'initScreen.dart';
 import 'login.dart';
 import 'signup.dart';
 import 'passwordrecovery.dart';
+import 'profile.dart';
 
  main (){
    runApp(MainFrame());
@@ -17,7 +18,7 @@ import 'passwordrecovery.dart';
        title: 'FictionSearch',
        debugShowCheckedModeBanner: false,
        theme: ThemeData(primarySwatch: Colors.grey),
-       home: Login(),
+       home: Profile(),
      );
    }
  }

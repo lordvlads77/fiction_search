@@ -3,9 +3,9 @@ import 'styles.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'welcome.dart';
 import 'signup.dart';
 import 'passwordrecovery.dart';
+import 'profile.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -39,7 +39,7 @@ class _LoginState extends State<Login> {
 
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
           builder: (BuildContext context){
-            return Bienvenida();
+            return Profile();
           }
       ),
               (route) => false);
@@ -102,7 +102,7 @@ class _LoginState extends State<Login> {
         ));*/
         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
             builder: (BuildContext context){
-              return Bienvenida();
+              return Profile();
             }
         ),
                 (route) => false);
