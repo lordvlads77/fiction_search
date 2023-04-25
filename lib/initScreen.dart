@@ -172,6 +172,20 @@ class _InitScreenState extends State<InitScreen> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 26,
+                  ),
+                  Stack(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset('img/searchIcon.png'),
+                          Image.asset('img/userProfile.png')
+                        ],
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

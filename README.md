@@ -19,3 +19,5 @@ samples, guidance on mobile development, and a full API reference.
 - Why is there a line under the letters when you type in the text field, like if the text was underline.
 - How can I put different fontweights, fontstyles within the same text.
 - How to make all the Mediums Italics in initScreen.dart left aligned and the Regular texts center aligned.
+- Ask what is the image between Image.asset and Image(image:)
+- Ask how to move the icons in the bottom so they have more space between them

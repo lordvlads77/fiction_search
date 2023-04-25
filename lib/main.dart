@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'initScreen.dart';
+import 'login.dart';
 
  main (){
    runApp(MainFrame());
@@ -14,7 +15,7 @@ import 'initScreen.dart';
        title: 'FictionSearch',
        debugShowCheckedModeBanner: false,
        theme: ThemeData(primarySwatch: Colors.grey),
-       home: InitScreen(),
+       home: Login(),
      );
    }
  }
