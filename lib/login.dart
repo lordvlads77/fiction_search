@@ -1,3 +1,4 @@
+import 'package:fiction_search/welcome.dart';
 import 'package:flutter/material.dart';
 import 'styles.dart';
 import 'package:flutter/services.dart';
@@ -39,7 +40,7 @@ class _LoginState extends State<Login> {
 
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
           builder: (BuildContext context){
-            return Profile();
+            return Bienvenida();
           }
       ),
               (route) => false);
@@ -102,7 +103,7 @@ class _LoginState extends State<Login> {
         ));*/
         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
             builder: (BuildContext context){
-              return Profile();
+              return Bienvenida();
             }
         ),
                 (route) => false);

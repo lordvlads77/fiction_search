@@ -4,6 +4,7 @@ import 'login.dart';
 import 'signup.dart';
 import 'passwordrecovery.dart';
 import 'profile.dart';
+import 'editarPerfil.dart';
 
  main (){
    runApp(MainFrame());
@@ -18,7 +19,7 @@ import 'profile.dart';
        title: 'FictionSearch',
        debugShowCheckedModeBanner: false,
        theme: ThemeData(primarySwatch: Colors.grey),
-       home: Profile(),
+       home: CambiarPerfil(),
      );
    }
  }
