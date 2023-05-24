@@ -21,7 +21,7 @@ import '';
        title: 'FictionSearch',
        debugShowCheckedModeBanner: false,
        theme: ThemeData(primarySwatch: Colors.grey),
-       home: AddFanFiction(),
+       home:AddFanFiction(),
      );
    }
  }
