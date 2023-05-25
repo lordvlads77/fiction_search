@@ -34,6 +34,14 @@ final lightHintTxtF = TextStyle(
 
 /*General Letter Styles*/
 
+final sloganStyle = TextStyle(
+  color: HexColor("#888888"),
+  fontFamily: 'Roboto',
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w400,
+  fontSize: 24,
+);
+
 final mItalic = TextStyle(
   fontFamily: 'Roboto',
   color: HexColor("#FFFFFF"),

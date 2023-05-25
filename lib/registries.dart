@@ -1,17 +1,17 @@
-class Registries {
+class Registro {
 
-  String? _id;
-  String? _title;
-  String? _link;
-  String? _description;
+  String? id;
+  String? title;
+  String? link;
+  String? description;
 
-  Registries(this._id, this._title, this._link, this._description);
+  Registro(this.id, this.title, this.link, this.description);
 
-  Registries.fromJson(Map<String, dynamic> json){
-    _id = json['id'].toString();
-    _title = json['title'].toString();
-    _link = json['link'].toString();
-    _description = json['description'].toString();
+  Registro.fromJson(Map<String, dynamic> json){
+    id = json['id'].toString();
+    title = json['title'].toString();
+    link = json['link'].toString();
+    description = json['description'].toString();
   }
 
 }
