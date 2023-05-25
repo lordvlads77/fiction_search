@@ -1,47 +1,47 @@
 import 'dart:convert';
-import 'package:fiction_search/styles.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'styles.dart';
+import 'package:hexcolor/hexcolor.dart';
 
-class AddFanFiction extends StatefulWidget {
-  const AddFanFiction({Key? key}) : super(key: key);
+class EditFics extends StatefulWidget {
+
+  String id;
+
+  EditFics(this.id, {Key? key}) : super(key: key);
 
   @override
-  State<AddFanFiction> createState() => _AddFanFictionState();
+  State<EditFics> createState() => _EditFicsState();
 }
 
-class _AddFanFictionState extends State<AddFanFiction> {
+class _EditFicsState extends State<EditFics> {
 
   var c_title = new TextEditingController();
   var c_link = new TextEditingController();
   var c_description = new TextEditingController();
-
+  
   String? title = '';
   String? link = '';
   String? description = '';
-
-  Future uploadFanfics() async{
-    print('Lista:'+title!+'--'+link!+'--'+description!);
-
-    // TODO: Remove https if it gives problems
-    var url = Uri.parse('http://fictionsearch.net/fictionSearchDB/uploadFics.php');
+  
+  edit_fic() async {
+    var url = Uri.parse('http://fictionsearch.net/fictionSearchDB/editFic.php');
     var response = await http.post(url, body: {
+      'id': widget.id,
       'title' : title,
       'link' : link,
-      'description' : description
+      'description' : description,
     }).timeout(Duration(seconds: 90));
-
-    //print(response.body);
-
-    if (response.body == '1'){
-      show_alert('Thanks, the fic has been succesfully saved on our database');
-      c_title.text = '';
-      c_link.text = '';
-      c_description.text = '';
-    }else {
+    
+    if (response.body == '1') {
+      Navigator.of(context).pop();
+      show_alert('The Details corresponding to this fic have been successfully modified');
+      c_title.text == '';
+      c_link.text == '';
+      c_description == '';
+    } else {
       show_alert(response.body);
     }
   }
@@ -69,8 +69,22 @@ class _AddFanFictionState extends State<AddFanFiction> {
         }
     );
   }
+  
+  Future show_ficses() async {
+    var url = Uri.parse('http://fictionsearch.net/fictionSearchDB/watchFic.php');
+    var response = await http.post(url, body: {
+      'id' : widget.id
+    }).timeout(Duration(seconds: 90));
 
-  void _showL() async {
+    var data = jsonDecode(response.body);
+    print(data['title']);
+
+    c_title.text = data['title'];
+    c_link.text = data['link'];
+    c_description.text = data['description'];
+  }
+
+  void _showLoading() async {
     setState(() {
       var maskWidget = Container(
         width: double.infinity,
@@ -78,14 +92,14 @@ class _AddFanFictionState extends State<AddFanFiction> {
         child: Opacity(
           opacity: 0.6,
           child: Image.network(
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROT_ryOIqv0GCgAsc1Alfn9mkfplQEsFZXg&usqp=CAU',
+            'https://w0.peakpx.com/wallpaper/31/156/HD-wallpaper-shaka-de-virgo-thumbnail.jpg',
             fit: BoxFit.fill,
           ),
         ),
       );
       SmartDialog.showLoading(maskWidget: maskWidget);
     });
-    uploadFanfics().then((value){
+    edit_fic().then((value){
       setState(() {
         SmartDialog.dismiss();
       });
@@ -93,10 +107,15 @@ class _AddFanFictionState extends State<AddFanFiction> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    show_ficses();
+  }
+
+  
+  @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ));
     return GestureDetector(
       onTap: (){
         final FocusScopeNode focus = FocusScope.of(context);
@@ -151,7 +170,7 @@ class _AddFanFictionState extends State<AddFanFiction> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Add Fanfics',
+                            Text('Edit Fanfics Details',
                               style: biggerWLoginStyle,
                             ),
                             SizedBox(
@@ -292,10 +311,11 @@ class _AddFanFictionState extends State<AddFanFiction> {
                                   if (title == '' || link == '' || description == ''){
                                     show_alert('You must enter all the data');
                                   }else {
-                                    _showL();
+                                    edit_fic();
+                                    _showLoading();
                                   }
                                 },
-                                child: Image.asset('img/uploadButton.png'),
+                                child: Image.asset('img/checkmark.png'),
                               ),
                             ),
                           ],
@@ -312,4 +332,3 @@ class _AddFanFictionState extends State<AddFanFiction> {
     );
   }
 }
-

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:fiction_search/editFicLink.dart';
 import 'package:fiction_search/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -55,6 +56,7 @@ class _ShowFanficsState extends State<ShowFanfics> {
             actions: [
               TextButton(onPressed: (){
                 Navigator.of(context).pop();
+                _onLoading();
                 delete_fic(id);
               },
                   child: Text('Accept')),
@@ -105,24 +107,11 @@ class _ShowFanficsState extends State<ShowFanfics> {
     if (response.body == '1'){
       show_alert('The fic has been successfully deleted');
       setState(() {
-        var maskWidget = Container(
-          width: double.infinity,
-          height: double.infinity,
-          child: Opacity(
-            opacity: 0.6,
-            child: Image.network(
-              'https://images6.fanpop.com/image/photos/40100000/Gemini-Kanon-saint-seiya-knights-of-the-zodiac-40122181-640-800.jpg',
-              fit: BoxFit.fill,
-            ),
-          ),
-        );
-        SmartDialog.showLoading(maskWidget: maskWidget);
         loading = true;
         reg = [];
         show_fanfics().then((value){
           setState(() {
             reg.addAll(value);
-            SmartDialog.dismiss();
             loading = false;
           });
         });
@@ -131,6 +120,28 @@ class _ShowFanficsState extends State<ShowFanfics> {
       show_alert(response.body);
     }
 
+  }
+
+  void _onLoading() async{
+    setState(() {
+      var maskWidget = Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Opacity(
+          opacity: 0.6,
+          child: Image.network(
+            'https://img.wattpad.com/15abf3dd902ebaf15e466410d94c3990611dc1d0/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f33566f42583762507178504f34773d3d2d3334302e313534373232323363346432633864663733373638373338313139352e6a7067?s=fit&w=720&h=720',
+            fit: BoxFit.fill,
+          ),
+        ),
+      );
+      SmartDialog.showLoading(maskWidget: maskWidget);
+    });
+    show_fanfics().then((value){
+      setState(() {
+        SmartDialog.dismiss(/*status: SmartStatus.loading*/);
+      });
+    });
   }
 
   @override
@@ -152,75 +163,138 @@ class _ShowFanficsState extends State<ShowFanfics> {
       statusBarColor: Colors.transparent,
     ));
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Added Fanfiction',
+          style: sRegularStyle,
+        ),
+      ),
       body: loading == true ?
 
-      const Center(
-        child: CircularProgressIndicator(),
-      )
+                const Center(
+                  child: CircularProgressIndicator(),
+                )
 
           : reg.isEmpty ?
 
-      Center(
-        child: Text('There is not fanfics in the database'),
-      )
+          Center(
+            child: Text('There is not fanfics in the database'),
+          )
 
           : ListView.builder(
           itemCount: reg.length,
           itemBuilder: (BuildContext context, int index){
             return Container(
-              decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(
-                        width: 1,
-                        color: Colors.grey
-                    )
-                ),
-              ),
-              child: Padding(padding: EdgeInsets.all(10),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(reg[index].title!,
-                        style: TextStyle(
-                            fontSize: 16
+              child: Column(
+                // TODO: Remove the line below if any layout issues occur
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 15,
+                        top: 10,
+                        bottom: 28
+                    ),
+                    alignment: Alignment.centerLeft,
+                    child: Text(reg[index].title!,
+                      style: masterStyle,
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.topRight,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                            width: 2,
+                            color: HexColor("#888888")
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: (){
-
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context){
-                              return Placeholder();//Editar(reg[index].id!);
-                            }
-                        )).then((value){
-
-                          setState(() {
-                            loading = true;
-                            reg = [];
-                            show_fanfics().then((value){
-                              setState(() {
-                                reg.addAll(value);
-                                loading = false;
-                              });
-                              // El set state sirve para redibujar o refreshear las variables que han cambiado
-                            });
-                          });
-                        });
-
-                      },
-                      child: Icon(Icons.edit, color: Colors.green,),
+                    child: Column(
+                      children: [
+                        Padding(padding: EdgeInsets.all(10),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                  child: Image.network(
+                                      'https://img.wattpad.com/15abf3dd902ebaf15e466410d94c3990611dc1d0/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f33566f42583762507178504f34773d3d2d3334302e313534373232323363346432633864663733373638373338313139352e6a7067?s=fit&w=720&h=720'
+                                  )
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(padding: EdgeInsets.all(10),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                //margin: EdgeInsets.only(top: 30, right: 19),
+                                child: Expanded(
+                                  child: Text(reg[index].link!,
+                                    style: ficsRegularLink,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(padding: EdgeInsets.all(10),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                //margin: EdgeInsets.only(top: 1),
+                                child: Expanded(
+                                  child: Text(reg[index].description!,
+                                    style: ficsRegularLink,
+                                    textAlign: TextAlign.right,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(padding: EdgeInsets.only(top: 5),
+                          child: Row(
+                            children: [
+                              MaterialButton(
+                                onPressed: (){
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (BuildContext context){
+                                        return EditFics(reg[index].id!);
+                                      }
+                                      )).then((value){
+                                        setState(() {
+                                          loading = true;
+                                          reg = [];
+                                          show_fanfics().then((value) {
+                                            setState(() {
+                                              reg.addAll(value);
+                                              loading = false;
+                                            });
+                                          });
+                                        });
+                                  });
+                                },
+                                child: Image.asset('img/editFicIcon.png'),
+                              ),
+                              MaterialButton(
+                                onPressed: (){
+                                  msn_delete(reg[index].id, reg[index].title);
+                                },
+                                child: Image.asset('img/RemoveFic.png'),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                    SizedBox(width: 10,),
-                    InkWell(
-                      onTap: (){
-                        msn_delete(reg[index].id, reg[index].title);
-                      },
-                      child: Icon(Icons.delete, color: Colors.red,),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                ],
+              )
             );
           }
       ),

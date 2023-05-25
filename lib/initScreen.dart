@@ -1,7 +1,9 @@
+import 'package:fiction_search/show_fanfics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'styles.dart';
+import 'profile.dart';
 
 class InitScreen extends StatefulWidget {
   const InitScreen({Key? key}) : super(key: key);
@@ -180,8 +182,33 @@ class _InitScreenState extends State<InitScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image.asset('img/searchIcon.png'),
-                          Image.asset('img/userProfile.png')
+                          MaterialButton(
+                              onPressed: (){
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context){
+                                      return Placeholder();
+                                    }));
+                              },
+                            child: Image.asset('img/searchIcon56.png'),
+                          ),
+                          MaterialButton(
+                              onPressed: (){
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context){
+                                      return ShowFanfics();
+                                    }));
+                              },
+                            child: Image.asset('img/explore.png'),
+                          ),
+                          MaterialButton(
+                              onPressed: (){
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context){
+                                      return Profile();
+                                    }));
+                              },
+                            child: Image.asset('img/profilepic56.png'),
+                          ),
                         ],
                       ),
                     ],

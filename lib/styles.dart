@@ -24,6 +24,14 @@ final sRegularStyle = TextStyle(
   fontWeight: FontWeight.w400
 );
 
+final sRegFicListStyle = TextStyle(
+  color: HexColor("#FFFFFF"),
+  fontFamily: 'Roboto',
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w400,
+  fontSize: 16,
+);
+
 final lightHintTxtF = TextStyle(
   color: HexColor("#FFFFFF"),
   fontFamily: 'Roboto',
@@ -135,4 +143,30 @@ final light25 = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w300,
   fontSize: 25
+);
+
+/* Specific Text Styles*/
+
+final ficsRegularTitle = TextStyle(
+  color: HexColor("#FFFFFF"),
+  fontFamily: 'Roboto',
+  fontStyle: FontStyle.normal,
+  fontSize: 19,
+  fontWeight: FontWeight.w400
+);
+
+final ficsRegularLink = TextStyle(
+    color: HexColor("#FFFFFF"),
+    fontFamily: 'Roboto',
+    fontStyle: FontStyle.italic,
+    fontSize: 15,
+    fontWeight: FontWeight.w500
+);
+
+final ficsRegularDescrip = TextStyle(
+    color: HexColor("#FFFFFF"),
+    fontFamily: 'Roboto',
+    fontStyle: FontStyle.normal,
+    fontSize: 16,
+    fontWeight: FontWeight.w400
 );
