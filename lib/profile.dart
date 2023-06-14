@@ -4,6 +4,8 @@ import 'package:fiction_search/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'initScreen.dart';
+import 'add_fanfics.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -96,21 +98,38 @@ class _ProfileState extends State<Profile> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Image.asset('img/homeIconM.png'),
-                              /*Image.asset('img/Favorite_M.png'),
-                              Image.asset('img/Recent_M.png'),*/
-                              Container(
+                              MaterialButton(
+                                onPressed: (){
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (BuildContext context){
+                                        return InitScreen();
+                                      }));
+                                },
+                                child: Image.asset('img/homeIconM.png'),
+                              ),
+                              MaterialButton(
+                                onPressed: (){
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (BuildContext context){
+                                        return AddFanFiction();
+                                      }));
+                                },
+                                child: Image.asset('img/addFics.png'),
+                              ),
+                              /*MaterialButton(
+                                onPressed: (){
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (BuildContext context){
+                                        return Placeholder();
+                                      }));
+                                },
+                                child: Image.asset('img/favsUser.png'),
+                              ),*/
+                              /*Container(
                                 padding: EdgeInsets.only(
                                   left: 40,
                                 ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset('img/Favorite_M.png'),
-                                  Image.asset('img/Recent_M.png'),
-                                ],
-                              )
+                              ),*/
                             ],
                           ),
                         ],
