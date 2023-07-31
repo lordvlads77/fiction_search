@@ -27,7 +27,7 @@ import 'editFicLink.dart';
        theme: ThemeData(primarySwatch: Colors.grey,
          canvasColor: HexColor("#262626")
        ),
-       home: CambiarPerfil(),
+       home: InitScreen(),
        navigatorObservers: [FlutterSmartDialog.observer],
        builder: FlutterSmartDialog.init(),
      );
