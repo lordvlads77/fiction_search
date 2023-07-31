@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'signup.dart';
 import 'passwordrecovery.dart';
 import 'profile.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -94,7 +95,13 @@ class _LoginState extends State<Login> {
     print('Email: '+email);
     print('Password: '+password);
 
-    if(email != null){
+    final url = Uri.parse('http://fictionsearch.net/fictionSearchDB/login.php');
+    final response = await http.post(url, body: {
+      "email": email,
+      "password": password,
+    }).timeout(Duration(seconds: 90));
+
+    /*if(email != null){
       if (email != '') {
         /*Navigator.of(context).push(MaterialPageRoute(
             builder: (BuildContext context){
@@ -108,7 +115,7 @@ class _LoginState extends State<Login> {
         ),
                 (route) => false);
       }
-    }
+    }*/
 
   }
 

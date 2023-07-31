@@ -8,7 +8,7 @@ class UsersRegistry {
 
   UsersRegistry(this.email, this.username, this.password, this.name, this.favoritefandom);
 
-  UsersRegistry.fromJSON(Map<String, dynamic> json){
+  UsersRegistry.fromJson(Map<String, dynamic> json){
     id = json['id'].toString();
     email = json['email'].toString();
     username = json['username'].toString();
