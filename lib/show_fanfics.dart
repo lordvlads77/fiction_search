@@ -23,7 +23,7 @@ class _ShowFanficsState extends State<ShowFanfics> {
   List<Registro> reg = [];
 
   Future<List<Registro>> show_fanfics() async {
-    var url = Uri.parse('http://fictionsearch.net/fictionSearchDB/showFics.php');
+    var url = Uri.parse('https://fictionsearch.net/fictionSearchDB/showFics.php');
     var response = await http.post(url).timeout(Duration(seconds: 90));
 
     final data = jsonDecode(response.body);
